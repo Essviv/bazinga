@@ -1,0 +1,30 @@
+<html>
+<head>
+    <meta charset="text/html; charset=utf-8"/>
+    <title>Users</title>
+</head>
+
+<body>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Gender</th>
+    </tr>
+
+    #foreach($user in $users)
+        <tr>
+            <td>${user.name}</td>
+            <td>${user.email}</td>
+            <td>
+                #if(${user.gender} == "M")
+                    男
+                #else
+                    女
+                #end
+            </td>
+        </tr>
+    #end
+</table>
+</body>
+</html>
