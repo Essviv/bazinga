@@ -35,6 +35,8 @@
 
     <properties>
         <spring.version>3.2.15.RELEASE</spring.version>
+        <shiro.version>1.2.4</shiro.version>
+        <slf4j.version>1.7.12</slf4j.version>
     </properties>
 
     <!-- dependencies -->
@@ -104,7 +106,6 @@
         </dependency>
 
         <!-- myBatis -->
-        <!-- mybatis -->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
@@ -124,12 +125,45 @@
             <version>1.4</version>
         </dependency>
 
-        <!--log4j -->
+        <!-- slf4j -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+
+        <!-- log4j -->
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
         </dependency>
+
+        <!-- shiro -->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-web</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -151,8 +185,6 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.6</version>
                 <configuration>
-                    <warName>${project.artifactId}</warName>
-
                     <webResources>
                         <resource>
                             <directory>${basedir}/src/main/webapp</directory>
@@ -173,5 +205,10 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
+
+        <filters>
+            <filter>
+            </filter>
+        </filters>
     </build>
 </project>

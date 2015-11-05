@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.LinkedList;
@@ -18,17 +19,12 @@ import java.util.Random;
  * Created by sunyiwei on 2015/11/3.
  */
 @Controller
-@RequestMapping("/test")
-public class TestController {
+@RequestMapping("users")
+public class UserController {
     @Autowired
     UserService userService;
 
-    @RequestMapping("index")
-    public String test() {
-        return "index";
-    }
-
-    @RequestMapping("insert/{count}")
+    @RequestMapping(value = "{count}", method = RequestMethod.POST)
     @ResponseBody
     public String insert(@PathVariable int count) {
         List<User> users = new LinkedList<User>();
@@ -44,11 +40,11 @@ public class TestController {
         return userService.batchInsert(users) ? "OK" : "ERROR";
     }
 
-    @RequestMapping("list")
+    @RequestMapping
     public String list(ModelMap modelMap) {
         List<User> users = userService.list();
         modelMap.addAttribute("users", users);
-        return "list";
+        return "user/list";
     }
 
     private String randStr(int length) {
